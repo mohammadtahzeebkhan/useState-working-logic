@@ -1,0 +1,32 @@
+
+//this useState currently working for numberic value increment 
+
+let state;
+let initialized = false;
+function useState(initialValue) {
+  if (!initialized) {
+    state = initialValue;
+    initialized = true;
+  }
+  return [state, c=> state = c];
+}
+
+function Component() {
+  const [count, setCount] = useState(1);
+  //const [count, setCount] = useState("");
+  
+  console.log(count);
+  
+  setCount(count+1);
+  //setCount(4);
+  //console.log(count);
+  //setCount(5);
+  //setCount('tahzeeb');
+  //console.log(count);
+  //setCount("khan");
+  //console.log(count);//
+}
+
+Component();
+Component(); // in reality `setCount` somehow triggers a rerender, calling Component again
+Component(); // another rerender
